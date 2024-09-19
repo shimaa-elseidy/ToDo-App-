@@ -12,6 +12,6 @@ import { HomeComponent } from '../home/home.component';
 export class PageNotFoundComponent {
 private readonly _Router=inject(Router)
 goTosigninPage():void{
-  this._Router.navigate(['/signin'])
+  this._Router.navigate(['/signup'])
 }
 }
