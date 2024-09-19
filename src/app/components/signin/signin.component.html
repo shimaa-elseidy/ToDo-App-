@@ -1,0 +1,43 @@
+<section>
+    <div  class="shadow rounded-4 my-4 p-2 mx-auto w-75 container">
+    <h2 class="h1">Login:</h2>
+    <form [formGroup]="signinForm" (ngSubmit)="signin()" >
+        <div>
+                <div>
+            <label for="email">email</label>
+            <input 
+            [ngClass]="{
+                'is-valid' : ! signinForm.get('email')?.errors && (signinForm.get('email')?.touched || signinForm.get('email')?.dirty),
+                'is-invalid' :   signinForm.get('email')?.errors && (signinForm.get('email')?.touched || signinForm.get('email')?.dirty) 
+            }"
+            id="email" type="email" class="form-control my-2" formControlName="email">
+                </div>
+                    @if (signinForm.get('email')?.errors && (signinForm.get('email')?.touched || signinForm.get('email')?.dirty) ) 
+                    {
+            <div class="alert alert-danger w-50 mx-auto">
+                @if     (signinForm.get('email')?.getError('required' ))  {<p class="m-0 text-center">email is req.</p>}
+                @else if(signinForm.get('email')?.getError('email'))  {<p class="m-0 text-center">email isn't valid.</p>}
+            </div>
+                    }
+                <div>
+            <label for="password">password</label>
+            <input 
+            [ngClass]="{'is-valid' : ! signinForm.get('password')?.errors && (signinForm.get('password')?.touched || signinForm.get('password')?.dirty),
+            'is-invalid' :   signinForm.get('password')?.errors && (signinForm.get('password')?.touched || signinForm.get('password')?.dirty) 
+            }"
+            id="password" type="password" class="form-control my-2" formControlName="password">
+                </div>
+                    @if (signinForm.get('password')?.errors && (signinForm.get('password')?.touched || signinForm.get('password')?.dirty) ) 
+                    {
+            <div class="alert alert-danger w-50 mx-auto">
+                @if     (signinForm.get('password')?.getError('required' ))  {<p class="m-0 text-center">password is req.</p>}
+                @else if(signinForm.get('password')?.getError('pattern'))    {<p class="m-0 text-center">password is't valid.</p>}
+            </div>
+                    }
+                <button [disabled]="signinForm.invalid"  type="submit" class=" btn btn-outline-info d-block ms-auto">Login</button>
+            </div>
+        </form>
+        @if(errorMsg){<p class="alert alert-danger m-0 text-center my-1 w-50 mx-auto">{{errorMsg}}</p>}
+        @if (successMsq) {<p class="m-0 text-center">Success!</p>}    
+    </div>
+</section>

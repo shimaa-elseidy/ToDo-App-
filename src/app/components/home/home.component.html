@@ -1,0 +1,81 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn ico btn-outline-info w-25 d-block mx-auto mt-3 rounded-pill" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add New Note <i class="fa-solid fa-book" style="color: #1da8aa;"></i>🔑
+</button>
+
+<!-- Notes -->
+<div class="container mt-5">
+    <div class="row g-4">
+        <!-- Note Card -->
+        @for (note of noteList; track $index) 
+        {
+            <div class="col-md-4">
+                <div class="card bg-light p-3 text-center">
+                    <h3 class=" mb-3">{{ note.title }}</h3>
+                    <p>{{ note.content }}</p>
+                    <div class="d-flex justify-content-end gap-1">
+                        <button  (click)=" getUpdateModal(note)" class="btn btn-outline-info w-25 btn-sm">Update</button>
+                        <button (click)=" deleteNote(note._id)" class="btn btn-outline-danger w-25 btn-sm">Delete</button>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Add Note</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="addNoteForm" (ngSubmit)="addNote()">
+                <div class="modal-body" style="color: #E37171;">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input id="title" type="text" class="form-control" formControlName="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea id="content" class="form-control" rows="3" formControlName="content"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-info btn-sm">Add Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- update modal -->
+<div class="modal fade" id="updatemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="exampleModalLabel">Update Note</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form [formGroup]="updateNoteForm" (ngSubmit)="updateData()">
+                <div class="modal-body" style="color: #E37171;">
+                    <div class="mb-3">
+                        <label for="title" class="form-label">Title</label>
+                        <input id="title" type="text" class="form-control" formControlName="title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="content" class="form-label">Content</label>
+                        <textarea id="content" class="form-control" rows="3" formControlName="content"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary btn-sm" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-outline-info btn-sm">Update Note</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

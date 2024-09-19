@@ -1,0 +1,26 @@
+<section class="m-0">
+    <nav class="navbar navbar-expand-lg bg-body-secondary">
+        <div class="container">
+            <a class="navbar-brand cr">ToDo <i class="fa-solid fa-book" style="color: #1da8aa;"></i>🔑</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                        <a class="nav-link cr" routerLink='/signup' routerLinkActive="active-link" >Signup</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cr" routerLink='/signin' routerLinkActive="active-link"  >Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link cr" routerLink='/home' routerLinkActive="active-link"  >Home</a>
+                    </li>
+                </ul>
+                <a (click)="signOut()" class="text-muted nav-link cr">Signout</a>
+            </div>
+        </div>
+    </nav>
+    <!-- <button (click)="goHome()" class="btn-main my-3 w-25 d-block m-auto mt-5 rounded-pill">Add New Note 📰🔑</button> -->
+</section>
